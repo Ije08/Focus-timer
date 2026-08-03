@@ -37,8 +37,8 @@
 
 ### 1. 레포지토리 클론
 ```bash
-git clone https://github.com/YOUR_USERNAME/focustimer.git
-cd focustimer
+git clone https://github.com/Ije08/Focus-timer.git
+cd Focus-timer
 ```
 
 ### 2. 패키지 설치
