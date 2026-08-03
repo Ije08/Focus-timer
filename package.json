@@ -2,10 +2,13 @@
   "name": "focustimer",
   "private": true,
   "version": "0.0.0",
+  "description": "A Focus Timer built with React and Neutralinojs",
+  "author": "Antigravity",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:widget": "npm run build && npx @neutralinojs/neu build --release && cmd /c \"cd /d dist\\FocusTimer_Widget && copy /b FocusTimer_Widget-win_x64.exe + resources.neu FocusTimer_Widget.exe\" && copy /y dist\\FocusTimer_Widget\\FocusTimer_Widget.exe public\\downloads\\FocusTimer_Widget.exe",
     "lint": "oxlint",
     "preview": "vite preview"
   },
@@ -23,8 +26,30 @@
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.4",
+    "concurrently": "^10.0.4",
+    "cross-env": "^10.1.0",
+    "electron": "^43.2.0",
+    "electron-builder": "^26.15.3",
+    "electron-packager": "^17.1.2",
     "oxlint": "^1.75.0",
     "typescript": "~6.0.2",
-    "vite": "^8.2.0"
+    "vite": "^8.2.0",
+    "wait-on": "^9.1.0"
+  },
+  "build": {
+    "appId": "com.focustimer.widget",
+    "productName": "FocusTimer Widget",
+    "directories": {
+      "output": "../dist-electron"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "signAndEditExecutable": false
+    },
+    "forceCodeSigning": false
   }
 }

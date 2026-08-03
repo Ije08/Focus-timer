@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { Settings, AppWindow, Trash2, Check, BarChart2 } from 'lucide-react';
+import { Settings, AppWindow, Trash2, Check, BarChart2, Download, X } from 'lucide-react';
 import { TimerSection } from './components/TimerSection';
 import { StatsSection } from './components/StatsSection';
 import { AnalyticsModal } from './components/AnalyticsModal';
@@ -21,6 +21,8 @@ function App() {
   const [focusMin, setFocusMin] = useState(Math.floor(durations.focus / 60));
   const [shortBreakMin, setShortBreakMin] = useState(Math.floor(durations.shortBreak / 60));
   const [longBreakMin, setLongBreakMin] = useState(Math.floor(durations.longBreak / 60));
+
+  const isWidget = new URLSearchParams(window.location.search).get('widget') === 'true';
 
   useEffect(() => {
     setFocusMin(Math.floor(durations.focus / 60));
@@ -110,6 +112,36 @@ function App() {
     setTimeout(() => setSavedSuccess(false), 2000);
   };
 
+  if (isWidget) {
+    document.body.style.background = 'transparent';
+    return (
+      <div style={{ 
+        width: '100vw', height: '100vh', 
+        background: 'rgba(255, 255, 255, 0.5)', 
+        backdropFilter: 'blur(20px)', 
+        borderRadius: '24px', 
+        overflow: 'hidden', 
+        padding: '16px',
+        border: '1px solid rgba(255, 255, 255, 0.8)',
+        boxShadow: '0 12px 40px rgba(0,0,0,0.15)',
+        WebkitAppRegion: 'drag' as any,
+        display: 'flex',
+        flexDirection: 'column',
+        position: 'relative'
+      } as any}>
+        <button 
+          onClick={() => window.close()} 
+          style={{ position: 'absolute', top: 16, right: 16, WebkitAppRegion: 'no-drag', background: 'rgba(0,0,0,0.05)', border: 'none', borderRadius: '50%', padding: '6px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' } as any}
+        >
+          <X size={18} color="#475569" />
+        </button>
+        <div style={{ flex: 1, WebkitAppRegion: 'no-drag', display: 'flex', flexDirection: 'column' } as any}>
+          <PipWidget />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="bg-wrapper">
@@ -123,6 +155,17 @@ function App() {
           <h1 className="top-header-title">Focus Timer</h1>
           <div className="top-header-actions" style={{ position: 'relative' }}>
             
+            {/* Desktop Widget Download */}
+            <a 
+              href="/downloads/FocusTimer_Widget.exe" 
+              download
+              className="btn-download" 
+              title="데스크톱 위젯 다운로드 (.exe)"
+            >
+              <Download size={16} />
+              <span>위젯 다운로드</span>
+            </a>
+
             {/* Analytics Modal Toggle */}
             <button className="btn-icon" title="상세 기록 분석" onClick={() => setShowAnalytics(true)}>
               <BarChart2 size={20} />

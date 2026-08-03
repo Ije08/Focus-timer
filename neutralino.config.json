@@ -1,0 +1,24 @@
+{
+  "applicationId": "com.focustimer.widget",
+  "version": "1.0.0",
+  "defaultMode": "window",
+  "port": 0,
+  "documentRoot": "/dist/",
+  "url": "/index.html?widget=true",
+  "modes": {
+    "window": {
+      "title": "FocusTimer",
+      "width": 280,
+      "height": 330,
+      "resizable": false,
+      "alwaysOnTop": true,
+      "borderless": true,
+      "transparent": true
+    }
+  },
+  "cli": {
+    "binaryName": "FocusTimer_Widget",
+    "resourcesPath": "/dist/",
+    "binaryVersion": "6.9.0"
+  }
+}
