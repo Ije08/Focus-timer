@@ -155,17 +155,6 @@ function App() {
           <h1 className="top-header-title">Focus Timer</h1>
           <div className="top-header-actions" style={{ position: 'relative' }}>
             
-            {/* Portable Desktop Widget Download */}
-            <a 
-              href="/downloads/FocusTimer_Widget.exe" 
-              download
-              className="btn-download" 
-              title="데스크톱 위젯 다운로드 (.exe - 최초 1회 [추가 정보] -> [실행] 클릭)"
-            >
-              <Download size={16} />
-              <span>무설치 위젯 (.exe)</span>
-            </a>
-
             {/* Analytics Modal Toggle */}
             <button className="btn-icon" title="상세 기록 분석" onClick={() => setShowAnalytics(true)}>
               <BarChart2 size={20} />

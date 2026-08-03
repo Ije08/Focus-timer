@@ -1,5 +1,7 @@
 # ⏱️ Focus Timer (뽀모도로 포커스 타이머)
 
+👉 **[웹에서 바로 실행하기 (무설치)](https://willowy-beijinho-a6bdf2.netlify.app/)**
+
 > 프리미엄 글래스모피즘 디자인과 웹 위젯(PIP) 기능을 지원하는 현대적인 오픈소스 포모도로 타이머입니다.
 
 ![React](https://img.shields.io/badge/React-18-61DAFB?logo=react)
