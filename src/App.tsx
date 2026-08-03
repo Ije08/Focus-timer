@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { Settings, AppWindow, Trash2, Check, BarChart2, Download, X } from 'lucide-react';
+import { Settings, AppWindow, Trash2, Check, BarChart2, X } from 'lucide-react';
 import { TimerSection } from './components/TimerSection';
 import { StatsSection } from './components/StatsSection';
 import { AnalyticsModal } from './components/AnalyticsModal';
