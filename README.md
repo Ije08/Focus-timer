@@ -1,6 +1,6 @@
 # ⏱️ Focus Timer (뽀모도로 포커스 타이머)
 
-👉 **[웹에서 바로 실행하기 (무설치)](https://willowy-beijinho-a6bdf2.netlify.app/)**
+👉 **[웹에서 바로 실행하기](https://willowy-beijinho-a6bdf2.netlify.app/)**
 
 > 프리미엄 글래스모피즘 디자인과 웹 위젯(PIP) 기능을 지원하는 현대적인 오픈소스 포모도로 타이머입니다.
 
@@ -33,43 +33,6 @@
 - **Icons**: Lucide React
 - **Styling**: Modern Vanilla CSS (Glassmorphism, Animations)
 
----
-
-## 🚀 시작하기 (Getting Started)
-
-### 1. 레포지토리 클론
-```bash
-git clone https://github.com/Ije08/Focus-timer.git
-cd Focus-timer
-```
-
-### 2. 패키지 설치
-```bash
-npm install
-```
-
-### 3. 개발 서버 실행
-```bash
-npm run dev
-```
-브라우저에서 `http://localhost:5173`으로 접속합니다.
-
-### 4. 프로덕션 빌드
-```bash
-npm run build
-```
-
----
-
-## 🤝 오픈소스 기여 안내 (Contributing)
-
-Focus Timer는 모든 기여(Feature 제안, 버그 제보, PR 등)를 환영합니다!
-
-1. This 레포지토리를 **Fork**합니다.
-2. 새로운 기능 브랜치를 생성합니다 (`git checkout -b feature/AmazingFeature`).
-3. 변경 사항을 커밋합니다 (`git commit -m 'Add some AmazingFeature'`).
-4. 브랜치에 푸시합니다 (`git push origin feature/AmazingFeature`).
-5. **Pull Request**를 생성합니다.
 
 ---
 
