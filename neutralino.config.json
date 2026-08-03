@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "defaultMode": "window",
   "port": 0,
-  "documentRoot": "/dist/",
+  "documentRoot": "dist/",
   "url": "/index.html?widget=true",
   "modes": {
     "window": {
@@ -18,7 +18,7 @@
   },
   "cli": {
     "binaryName": "FocusTimer_Widget",
-    "resourcesPath": "/dist/",
+    "resourcesPath": "dist/",
     "binaryVersion": "6.9.0"
   }
 }
