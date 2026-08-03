@@ -2,13 +2,12 @@
   "name": "focustimer",
   "private": true,
   "version": "0.0.0",
-  "description": "A Focus Timer built with React and Neutralinojs",
+  "description": "A modern Focus Timer Progressive Web App built with React and Vite",
   "author": "Antigravity",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "build:widget": "powershell -Command \"Remove-Item -Force -Recurse public\\downloads, dist, neu_dist -ErrorAction SilentlyContinue ; npm run build ; npx @neutralinojs/neu build --release ; New-Item -ItemType Directory -Path public\\downloads -Force ; C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe /target:winexe /r:System.Windows.Forms.dll /resource:neu_dist\\FocusTimer_Widget\\FocusTimer_Widget-win_x64.exe,FocusTimer_Widget_core.exe /resource:neu_dist\\FocusTimer_Widget\\resources.neu,resources.neu /out:public\\downloads\\FocusTimer_Widget.exe Launcher.cs\"",
     "lint": "oxlint",
     "preview": "vite preview"
   },
@@ -34,6 +33,7 @@
     "oxlint": "^1.75.0",
     "typescript": "~6.0.2",
     "vite": "^8.2.0",
+    "vite-plugin-pwa": "^1.3.0",
     "wait-on": "^9.1.0"
   },
   "build": {

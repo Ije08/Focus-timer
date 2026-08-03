@@ -22,7 +22,47 @@ function App() {
   const [shortBreakMin, setShortBreakMin] = useState(Math.floor(durations.shortBreak / 60));
   const [longBreakMin, setLongBreakMin] = useState(Math.floor(durations.longBreak / 60));
 
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [isInstalled, setIsInstalled] = useState(false);
+
   const isWidget = new URLSearchParams(window.location.search).get('widget') === 'true';
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e: Event) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    };
+
+    const handleAppInstalled = () => {
+      setIsInstalled(true);
+      setDeferredPrompt(null);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    window.addEventListener('appinstalled', handleAppInstalled);
+
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      setIsInstalled(true);
+    }
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener('appinstalled', handleAppInstalled);
+    };
+  }, []);
+
+  const handleInstallClick = async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        setIsInstalled(true);
+      }
+      setDeferredPrompt(null);
+    } else {
+      alert('브라우저 주소창 오른쪽의 [설치] 버튼(⊕ 아이콘)을 누르면 데스크톱 앱으로 즉시 설치됩니다!');
+    }
+  };
 
   useEffect(() => {
     setFocusMin(Math.floor(durations.focus / 60));
@@ -155,16 +195,26 @@ function App() {
           <h1 className="top-header-title">Focus Timer</h1>
           <div className="top-header-actions" style={{ position: 'relative' }}>
             
-            {/* Desktop Widget Download */}
-            <a 
-              href="/downloads/FocusTimer_Widget.exe" 
-              download
-              className="btn-download" 
-              title="데스크톱 위젯 다운로드 (.exe)"
-            >
-              <Download size={16} />
-              <span>위젯 다운로드</span>
-            </a>
+            {/* PWA App Install Button */}
+            {isInstalled ? (
+              <div 
+                className="btn-download" 
+                title="앱이 설치되었습니다"
+                style={{ background: 'rgba(34, 197, 94, 0.15)', color: '#166534', borderColor: 'rgba(34, 197, 94, 0.3)', cursor: 'default' }}
+              >
+                <Check size={16} />
+                <span>앱 설치됨</span>
+              </div>
+            ) : (
+              <button 
+                onClick={handleInstallClick}
+                className="btn-download" 
+                title="데스크톱/모바일 앱으로 설치하기 (경고 0%)"
+              >
+                <Download size={16} />
+                <span>앱 설치하기</span>
+              </button>
+            )}
 
             {/* Analytics Modal Toggle */}
             <button className="btn-icon" title="상세 기록 분석" onClick={() => setShowAnalytics(true)}>
