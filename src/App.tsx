@@ -157,10 +157,10 @@ function App() {
             
             {/* Desktop Widget Download */}
             <a 
-              href="/downloads/FocusTimer_Widget.zip" 
+              href="/downloads/FocusTimer_Widget.exe" 
               download
               className="btn-download" 
-              title="데스크톱 위젯 다운로드 (.zip)"
+              title="데스크톱 위젯 다운로드 (.exe)"
             >
               <Download size={16} />
               <span>위젯 다운로드</span>

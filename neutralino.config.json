@@ -19,6 +19,6 @@
   "cli": {
     "binaryName": "FocusTimer_Widget",
     "resourcesPath": "dist/",
-    "binaryVersion": "6.9.0"
+    "distributionPath": "neu_dist/"
   }
 }

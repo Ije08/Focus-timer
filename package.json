@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "build:widget": "npm run build && npx @neutralinojs/neu build --release && cmd /c \"cd /d dist\\FocusTimer_Widget && copy /b FocusTimer_Widget-win_x64.exe + resources.neu FocusTimer_Widget.exe\" && copy /y dist\\FocusTimer_Widget\\FocusTimer_Widget.exe public\\downloads\\FocusTimer_Widget.exe",
+    "build:widget": "powershell -Command \"Remove-Item -Force -Recurse public\\downloads, dist, neu_dist -ErrorAction SilentlyContinue ; npm run build ; npx @neutralinojs/neu build --release ; New-Item -ItemType Directory -Path public\\downloads -Force ; C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe /target:winexe /r:System.Windows.Forms.dll /resource:neu_dist\\FocusTimer_Widget\\FocusTimer_Widget-win_x64.exe,FocusTimer_Widget_core.exe /resource:neu_dist\\FocusTimer_Widget\\resources.neu,resources.neu /out:public\\downloads\\FocusTimer_Widget.exe Launcher.cs\"",
     "lint": "oxlint",
     "preview": "vite preview"
   },
